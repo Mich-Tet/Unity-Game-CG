@@ -6,7 +6,7 @@ public class PlayerVision : MonoBehaviour
 {
     [SerializeField] float minViewDistance = 25f;
 
-    public float mSens = 300f;
+    public float mSens = 100f;
 
     [SerializeField] Transform playerBody;
 
@@ -22,8 +22,8 @@ public class PlayerVision : MonoBehaviour
     void Update()
     {
         //VISION
-        float mouseX = Input.GetAxisRaw("Mouse X") * mSens * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mSens * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mSens * 5f * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mSens * 5f * Time.deltaTime;
 
         xRot -= mouseY;
         xRot = Mathf.Clamp(xRot, -90f, minViewDistance);
