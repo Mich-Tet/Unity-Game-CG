@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerVision : MonoBehaviour
 {
-    [SerializeField] float minViewDistance = 25f;
+    [SerializeField] float minViewDistance = 50f;
 
     public float mSens = 100f;
 
