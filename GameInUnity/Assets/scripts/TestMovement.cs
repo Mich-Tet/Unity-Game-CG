@@ -39,7 +39,7 @@ public class TestMovement : MonoBehaviour
     void Update()
     {
         
-        isOnGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f , whatIsGround);
+        isOnGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 1.0f , whatIsGround);
         //MOVEMENT
         moveCharacter();
         SpeedControll();
