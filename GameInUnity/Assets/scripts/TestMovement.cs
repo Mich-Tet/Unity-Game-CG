@@ -12,7 +12,6 @@ public class TestMovement : MonoBehaviour
     [Header("Ground Check")]
 
     public float playerHeight;
-    public LayerMask whatIsGround;
     bool isOnGround;
 
 
@@ -22,9 +21,8 @@ public class TestMovement : MonoBehaviour
     float horizonalInput;
     float verticalInput;
     public float groundDrag = 1f;
-
-    public float jumpForce = 12f;
-    public float jumpCooldown = 0.25f;
+    public Vector3 jump;
+    public float jumpForce = 2.0f;
     public float airMultiplier = 0.4f;
     public KeyCode jumpKey = KeyCode.Space;
     bool rdyForJumping;
@@ -33,13 +31,16 @@ public class TestMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
+    }
+
+    void OnCollisionStay(){
+        isOnGround = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        isOnGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f , whatIsGround);
         //MOVEMENT
         moveCharacter();
         SpeedControll();
@@ -71,11 +72,10 @@ public class TestMovement : MonoBehaviour
         horizonalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         //jump
-        if (Input.GetKey(jumpKey) && rdyForJumping && isOnGround)
-        {
-            rdyForJumping = false;
-            Jump();
-            Invoke(nameof(ResetJump), jumpCooldown);
+        if(Input.GetKeyDown(KeyCode.Space) && isOnGround){
+
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
         }
     }
     private void SpeedControll()
@@ -87,14 +87,5 @@ public class TestMovement : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * speed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
-    }
-    private void Jump()
-    {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-    }
-    private void ResetJump()
-    {
-        rdyForJumping = true;
     }
 }
