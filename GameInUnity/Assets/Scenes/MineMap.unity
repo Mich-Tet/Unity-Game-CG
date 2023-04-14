@@ -1194,8 +1194,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168883075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.5466, y: 0, z: 70.1949}
-  m_LocalScale: {x: 213.50446, y: 1, z: 248.41498}
+  m_LocalPosition: {x: -49.5815, y: -0, z: 254.1882}
+  m_LocalScale: {x: 259.57874, y: 1, z: 616.3921}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1647,7 +1647,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1115526168}
-  m_RootOrder: 21
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &489884427
 Light:
@@ -4085,14 +4085,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   playerHeight: 2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
   movementDirection: {x: 0, y: 0, z: 0}
   orientation: {fileID: 963194228}
   groundDrag: 5
+  jump: {x: 0, y: 0, z: 0}
   jumpForce: 12
-  jumpCooldown: 0.25
   airMultiplier: 0.4
   jumpKey: 32
 --- !u!1 &1084651663
@@ -4220,6 +4217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1900306947}
   - {fileID: 1650962120}
   - {fileID: 1142925246}
   - {fileID: 2048719473}
@@ -4227,7 +4225,6 @@ Transform:
   - {fileID: 489127735}
   - {fileID: 696449010}
   - {fileID: 1677141683}
-  - {fileID: 1900306947}
   - {fileID: 524649555}
   - {fileID: 86493650}
   - {fileID: 781968818}
@@ -4237,11 +4234,11 @@ Transform:
   - {fileID: 1505308958}
   - {fileID: 1767544991}
   - {fileID: 573752428}
+  - {fileID: 489884426}
   - {fileID: 585960016}
   - {fileID: 843521028}
   - {fileID: 108641097}
   - {fileID: 57697789}
-  - {fileID: 489884426}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -6736,7 +6733,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1115526168}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1900306948
 BoxCollider:
