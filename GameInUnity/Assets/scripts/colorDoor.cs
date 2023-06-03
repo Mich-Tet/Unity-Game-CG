@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorOpen : MonoBehaviour
+public class colorDoor : MonoBehaviour
 {
     public GameObject Door;
     private Vector3 doorPosy;
     private float myTime;
-    public keypad KP;
-    public float closeDelay = 2.7f;
+    public ColorPad CP;
+    public float closeDelay = 3.0f;
     // Start is called before the first frame update
 
     public void Update()
@@ -19,15 +19,15 @@ public class DoorOpen : MonoBehaviour
     // Update is called once per frame
     public void MoveDoor(GameObject Door)
     {
-        if (KP.open == true)
-        {
-            Door.transform.Translate(Vector3.up * 2 * myTime);
-            StartCoroutine(StopDoor());
-        }
+            if (CP.open == true)
+            {
+                Door.transform.Translate(Vector3.up *2* myTime);
+                StartCoroutine(StopDoor());
+            }
     }
     IEnumerator StopDoor()
     {
         yield return new WaitForSeconds(closeDelay);
-        KP.open = false;
+        CP.open = false;
     }
 }

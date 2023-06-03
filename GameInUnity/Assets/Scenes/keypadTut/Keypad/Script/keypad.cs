@@ -1,22 +1,15 @@
-﻿//333333333333333333333333333333333333333333333333333333333333333333\\
-//
-//          Arthur: Cato Parnell
-//          Description of script: control keypad button clicks and actions
-//          Any queries please go to Youtube: Cato Parnell and ask on video. 
-//          Thanks.
-//
-//33333333333333333333333333333333333333333333333333333333333333333\\
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class keypad : MonoBehaviour
 {
     [Header("Objects to Hide/Show")]
 
-    // Object to be enabled is the keypad. This is needed
     public GameObject objectToEnable;
     public GameObject Door;
 
@@ -28,21 +21,24 @@ public class keypad : MonoBehaviour
 
     [Header("Keypad Settings")]
     public string curPassword = "7482";
-    public string input;
+    private string input;
     public Text displayText;
     public AudioSource audioData;
+    public AudioSource correctSound;
     private float doorPosy;
     //Local private variables
     private bool keypadScreen;
     private float btnClicked = 0;
     private float numOfGuesses;
-
+    public bool open;
+    public UnityEvent OnEntryAllowed;
     // Start is called before the first frame update
     void Start()
     {
         btnClicked = 0; // No of times the button was clicked
         numOfGuesses = curPassword.Length; // Set the password length.
         doorPosy = Door.transform.position.y;
+
     }
 
     // Update is called once per frame
@@ -52,15 +48,18 @@ public class keypad : MonoBehaviour
         {
             if (input == curPassword)
             {
-                //Load the next scene
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                Door.transform.Translate(Vector3.up*7f);
+                //audioSource.PlayOneShot(correctSound);
+
+                OnEntryAllowed.Invoke();
+                open = true;
+
                 // LOG message that password is correct
                 Debug.Log("Correct Password!");
                 input = ""; //Clear Password
                 btnClicked = 0;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+                correctSound.Play();
             }
             else
             {
