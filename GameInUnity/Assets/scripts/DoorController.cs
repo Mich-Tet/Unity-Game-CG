@@ -4,33 +4,50 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+    public AudioClip moveSound;
     public GameObject Door;
     private float doorPos;
     public bool doorIsOpening;
     public bool doorIsClosing;
-    public float openDelay = 1.0f;
-    public float closeDelay = 1.0f;
+    public bool playSound;
+    public float closeDelay = 2.7f;
+    AudioSource audioSource;
+
     void Start()
     {
         doorPos = Door.transform.position.y;
+        audioSource = GetComponent<AudioSource>();
+
     }
     // Update is called once per frame
     void Update()
     {
         if(doorIsOpening == true)
         {
-            Door.transform.Translate(Vector3.up * Time.deltaTime * 5);
+            if (playSound == true)
+            {
+                PlaySound();
+            }
+            Door.transform.Translate(Vector3.up * Time.deltaTime * 2);
             if (Door.transform.position.y >= 10.0f)
             {
+                
                 doorIsOpening = false;
+                playSound = true;
                 StartCoroutine(CloseDoor());
             }
+
         }
         if (doorIsClosing == true)
         {
-            Door.transform.Translate(Vector3.down * Time.deltaTime * 5);
+            if (playSound == true)
+            {
+                PlaySound();
+            }
+            Door.transform.Translate(Vector3.down * Time.deltaTime * 2);
             if (Door.transform.position.y <= doorPos)
             {
+                
                 doorIsClosing = false;
             }
         }
@@ -39,6 +56,7 @@ public class DoorController : MonoBehaviour
     {
         if (doorIsOpening == false && doorIsClosing == false)
         {
+            playSound = true;
             doorIsOpening = true;
         }
         else if (doorIsOpening == false && doorIsClosing == true)
@@ -46,7 +64,6 @@ public class DoorController : MonoBehaviour
 
             doorIsClosing = false;
             doorIsOpening = true;
-
         }
         else if (doorIsOpening == true && doorIsClosing == false)
         {
@@ -55,8 +72,15 @@ public class DoorController : MonoBehaviour
         }
 
     }
+    void PlaySound()
+    {
+        audioSource.PlayOneShot(moveSound);
+        playSound = false;
+
+    }
     IEnumerator CloseDoor()
     {
+
         yield return new WaitForSeconds(closeDelay);
 
         doorIsClosing = true;

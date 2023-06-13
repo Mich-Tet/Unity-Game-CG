@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ColorPad : MonoBehaviour
+public class NumPad : MonoBehaviour
 {
-    public string password = "GBRYGRB";
+    public string password = "7482";
     private string userInput = "";
 
     public AudioClip clickSound;
@@ -23,12 +23,12 @@ public class ColorPad : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         open = false;
     }
-    public void ColorClicked(string color)
+    public void NumberClicked(string number)
     {
         audioSource.PlayOneShot(clickSound);
-        userInput += color;
+        userInput += number;
 
-        if (userInput.Length >= 7)
+        if (userInput.Length >= 4)
         {
             if(userInput == password)
             { 
