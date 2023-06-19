@@ -7831,7 +7831,7 @@ MonoBehaviour:
     m_Bits: 8
   health: 50
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 25
+  walkPointRange: 10
   timeBetweenAttacks: 0.5
   projectile: {fileID: 0}
   sightRange: 15
@@ -7847,18 +7847,18 @@ NavMeshAgent:
   m_GameObject: {fileID: 606017324}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.1
-  m_Speed: 10
+  m_Radius: 1
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 10
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 0
+  m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 1
+  m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
 --- !u!23 &606017329
 MeshRenderer:
@@ -9831,13 +9831,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 79.10872, y: 29.453114, z: 62.49756}
-  m_Center: {x: 0.721138, y: 11.726557, z: 22.062866}
+  m_CollectObjects: 1
+  m_Size: {x: 150.1087, y: 10.45311, z: 330.4976}
+  m_Center: {x: 0.721138, y: 0.72656, z: 22.062866}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 72
-  m_UseGeometry: 1
+    m_Bits: 64
+  m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -23096,7 +23096,7 @@ GameObject:
   - component: {fileID: 1845623683}
   - component: {fileID: 1845623682}
   - component: {fileID: 1845623685}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wallFDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
