@@ -1,7 +1,9 @@
 
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 public class EnemyAI : MonoBehaviour
 {
     private Animator anim;
@@ -9,11 +11,9 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent agent;
 
     public Transform player;
-
     public LayerMask whatIsGround, whatIsPlayer;
-
+    public float delayOfDeath = 0.9f;
     public float health;
-
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(transform.position);
 
         transform.LookAt(player);
-
+        
         if (!alreadyAttacked)
         {
             ///Attack code here
@@ -94,11 +94,17 @@ public class EnemyAI : MonoBehaviour
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            
         }
     }
     private void ResetAttack()
     {
+        
         alreadyAttacked = false;
+        if (playerInAttackRange)
+        {
+            StartCoroutine(LoadSceneWithDelay(delayOfDeath));
+        }
     }
 
     public void TakeDamage(int damage)
@@ -118,5 +124,10 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+    IEnumerator LoadSceneWithDelay( float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
