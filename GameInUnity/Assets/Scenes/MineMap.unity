@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 65888326}
   - component: {fileID: 65888327}
   m_Layer: 3
-  m_Name: Flashlight
+  m_Name: flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6901,6 +6901,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524649554}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &527269098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 1598216889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &527269099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527269098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0d890fabf5add4cbd3a09da8eabc4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlight: {fileID: 65888325}
+  on: 0
+  off: 0
 --- !u!1001 &534407686
 PrefabInstance:
   m_ObjectHideFlags: 0
